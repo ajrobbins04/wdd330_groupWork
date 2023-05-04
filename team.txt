@@ -1,7 +1,7 @@
 Netlify: https://6451a458ab7ea40f0e804b4b--effortless-florentine-c89a7c.netlify.app/
 Trello: https://trello.com/b/gbOqzewm/spring-2023-wdd330-team-1 
 Team Members:
-Amber Robbins
+Amber J. Robbins
 Marielle Honey Chiong
 João Filipe Gomes da Silva 
-Amber J. Robbins
+
