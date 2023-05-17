@@ -22,11 +22,20 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
-export function getParam(param) {
 
+// Commented off our code to match up with the instructor's 
+// sample code. Will delete later after we discuss the difference
+// --Marielle
+
+// export function getParam(param) {
+//   const queryString = window.location.search;
+//   const urlParams = new URLSearchParams(queryString);
+//   const product = urlParams.get(param);
+//   return product;
+// }
+
+export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const product = urlParams.get(param);
-
-  return product;
+  return urlParams.get(param);
 }

@@ -1,3 +1,4 @@
+
 import { findProductById } from "./productData.mjs";
 import { setLocalStorage } from "./utils.mjs";
 
@@ -33,3 +34,4 @@ export default async function productDetails(productId) {
         document.querySelector("#addToCart").dataset.id = product.Id;
         
     }
+
