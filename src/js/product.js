@@ -1,9 +1,13 @@
-import { getParam } from "./utils.mjs";
+import { findProductById } from "./productData.mjs";
+import { getParam, loadHeaderFooter } from "./utils.mjs";
 import productDetails from "./productDetails.mjs";
 
 
+loadHeaderFooter();
+
 const productId = getParam("product");
-console.log(productId);
+console.log(findProductById(productId));
+
 productDetails(productId);
 
 
