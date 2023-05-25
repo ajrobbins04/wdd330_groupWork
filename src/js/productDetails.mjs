@@ -12,15 +12,12 @@ export default async function productDetails(productId) {
     // add listener to Add to Cart button
     document.getElementById("addToCart")
     .addEventListener("click", addToCartHandler);
-}
-
 
     // add to cart button event handler
     async function addToCartHandler() {
         setLocalStorage("so-cart", product);
     }
- 
-
+}
     function renderProductDetails() { 
         document.querySelector("#productName").innerText = product.Brand.Name;
         document.querySelector("#productNameWithoutBrand").innerText 
