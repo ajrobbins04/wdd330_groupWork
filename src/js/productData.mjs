@@ -8,6 +8,9 @@ function convertToJson(res) {
 
 export function getData(category = "tents") {
   return fetch(`../json/${category}.json`)
+
+    // will be carried out when (or rather if)
+    // the promise is fulfilled
     .then(convertToJson)
     .then((data) => data);
 }
