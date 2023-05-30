@@ -30,9 +30,9 @@ export default async function productList(selector, category) {
     const products = await getData(category);
 
     // only show 4 products
-    //const fourProducts = products.filter(p => p.length < 5);
-
+    const fourProducts = products.slice(0, 4);
+  
     // render out the product list to the element
-    renderListWithTemplate(productCardTemplate, element, products);
+    renderListWithTemplate(productCardTemplate, element, fourProducts);
 }
 

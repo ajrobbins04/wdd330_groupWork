@@ -1,24 +1,29 @@
+// productDetails.mjs contains the code needed to 
+// dynamically produce the product detail pages.
 
 import { findProductById } from "./productData.mjs";
 import { setLocalStorage } from "./utils.mjs";
 
- 
+let product = {};
+
 export default async function productDetails(productId) {
 
     // get the details for the current product.
-    const product = await findProductById(productId);
+    product = await findProductById(productId);
+
+    // render out the details in HTML
     renderProductDetails();
 
     // add listener to Add to Cart button
     document.getElementById("addToCart")
-    .addEventListener("click", addToCartHandler);
+    .addEventListener("click", addToCart);
 
     // add to cart button event handler
-    async function addToCartHandler() {
+    async function addToCart() {
         setLocalStorage("so-cart", product);
     }
 }
-    function renderProductDetails() { 
+    async function renderProductDetails() { 
         document.querySelector("#productName").innerText = product.Brand.Name;
         document.querySelector("#productNameWithoutBrand").innerText 
         = product.NameWithoutBrand;
