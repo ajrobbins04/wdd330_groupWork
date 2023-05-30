@@ -68,7 +68,7 @@ export async function renderWithTemplate(
   }
 
   const htmlString = await templateFn(data);
-  //parentElement.insertAdjacentHTML(position, htmlString);
+  parentElement.insertAdjacentHTML(position, htmlString);
 
   if (callback) {
     callback(data);
@@ -94,8 +94,8 @@ export function loadHeaderFooter() {
   const headerTemplateFn = loadTemplate("/partials/header.html");
   const footerTemplateFn = loadTemplate("/partials/footer.html");
 
-  const header = document.getElementsByClassName("template-header");
-  const footer = document.getElementsByClassName("template-footer");
+  const header = document.querySelector("#template-header");
+  const footer = document.querySelector("#template-footer");
 
   renderWithTemplate(headerTemplateFn, header);
   renderWithTemplate(footerTemplateFn, footer);

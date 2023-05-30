@@ -1,6 +1,6 @@
-import { findProductById } from "./productData.mjs";
-import { getParam, loadHeaderFooter } from "./utils.mjs";
-import productDetails from "./productDetails.mjs";
+import { findProductById } from "../js/productData.mjs";
+import { getParam, loadHeaderFooter } from "../js/utils.mjs";
+import productDetails from "../js/productDetails.mjs";
 
 
 loadHeaderFooter();
