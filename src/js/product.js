@@ -6,8 +6,6 @@ import productDetails from "../js/productDetails.mjs";
 loadHeaderFooter();
 
 const productId = getParam("product");
-console.log(findProductById(productId));
-
 productDetails(productId);
 
 

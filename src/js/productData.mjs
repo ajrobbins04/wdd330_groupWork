@@ -1,3 +1,5 @@
+const baseURL = import.meta.env.VITE_SERVER_URL;
+
 function convertToJson(res) {
   if (res.ok) {
     return res.json();
@@ -6,20 +8,17 @@ function convertToJson(res) {
   }
 }
 
-// default category is tents...other categories
-// can be specified
-export function getData(category = "tents") {
-  return fetch(`../json/${category}.json`)
+export async function getData(category) {
+  const response = await fetch(baseURL + `products/search/${category}`);
+  const data = await convertToJson(response);
+  return data.Result;
 
-    // .then() will be carried out when (or 
-    // rather if) the promise is fulfilled
-    .then(convertToJson)
-    .then((data) => data);
 }
 
 // with async, js pauses the function execution
 // until the promise settles
 export async function findProductById(id) {
-  const products = await getData();
-  return products.find((item) => item.Id === id);
+  const response = await fetch(baseURL + `product/${id}`);
+  const product = convertToJson(response);
+  return product.Result;
 }
