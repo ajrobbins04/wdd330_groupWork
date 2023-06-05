@@ -12,13 +12,12 @@ export async function getData(category) {
   const response = await fetch(baseURL + `products/search/${category}`);
   const data = await convertToJson(response);
   return data.Result;
-
 }
 
 // with async, js pauses the function execution
 // until the promise settles
 export async function findProductById(id) {
   const response = await fetch(baseURL + `product/${id}`);
-  const product = convertToJson(response);
+  const product = await convertToJson(response);
   return product.Result;
 }
