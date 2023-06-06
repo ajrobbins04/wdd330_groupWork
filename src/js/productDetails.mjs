@@ -30,7 +30,7 @@ export default async function productDetails(productId) {
         document.querySelector("#productImage").src = product.Image;
         document.querySelector("#productImage").alt = product.Name;
         document.querySelector("#productRetailPrice").innerText = `Retail Price: $${product.SuggestedRetailPrice}`;
-        document.querySelector("#productFinalPrice").innerText = `Final Price: $${product.FinalPrice}`;
+        document.querySelector("#productFinalPrice").innerText = `Actual Price: $${product.FinalPrice}`;
         document.querySelector("#productColorName").innerText = `Colors: ${product.Colors[0].ColorName}`;
         document.querySelector("#productDescriptionHtmlSimple").innerHTML 
         = product.DescriptionHtmlSimple;
