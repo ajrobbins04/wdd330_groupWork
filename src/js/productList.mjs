@@ -7,6 +7,7 @@ import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
 
+  if (product.IsClearance === false) {
     return `<li class="product-card">
     <a href="/product_pages/index.html?product=${product.Id}">
       <img
@@ -15,9 +16,21 @@ function productCardTemplate(product) {
       />
       <h3 class="card__brand">${product.Brand.Name}</h3>
       <h2 class="card__name">${product.NameWithoutBrand}</h2>
-      <p class="product-card__retailPrice">Retail Price: $${product.SuggestedRetailPrice}</p>
-      <p class="product-card__price">Actual Price: $${product.FinalPrice}</p></a>
+      <p class="product-card__price">Price: $${product.FinalPrice}</p></a>
   </li>`;
+  } else {
+    return `<li class="product-card">
+    <a href="/product_pages/index.html?product=${product.Id}">
+      <img
+        src="${product.Images.PrimaryMedium}"
+        alt="Image of ${product.Name}"
+      />
+      <h3 class="card__brand">${product.Brand.Name}</h3>
+      <h2 class="card__name">${product.NameWithoutBrand}</h2>
+      <p class="product-card__clearance">List Price: $${product.ListPrice}</p>
+      <p class="product-card__price">Final Price: $${product.FinalPrice}</p></a>
+  </li>`;
+  }
 }
 
 export default async function productList(selector, category) {
