@@ -29,8 +29,9 @@ export default async function productDetails(productId) {
         = product.NameWithoutBrand;
         document.querySelector("#productImage").src = product.Image;
         document.querySelector("#productImage").alt = product.Name;
-        document.querySelector("#productFinalPrice").innerText = product.FinalPrice;
-        document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
+        document.querySelector("#productRetailPrice").innerText = `Retail Price: $${product.SuggestedRetailPrice}`;
+        document.querySelector("#productFinalPrice").innerText = `Final Price: $${product.FinalPrice}`;
+        document.querySelector("#productColorName").innerText = `Colors: ${product.Colors[0].ColorName}`;
         document.querySelector("#productDescriptionHtmlSimple").innerHTML 
         = product.DescriptionHtmlSimple;
         document.querySelector("#addToCart").dataset.id = product.Id;
