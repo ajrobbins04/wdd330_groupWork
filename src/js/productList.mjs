@@ -15,6 +15,7 @@ function productCardTemplate(product) {
       />
       <h3 class="card__brand">${product.Brand.Name}</h3>
       <h2 class="card__name">${product.NameWithoutBrand}</h2>
+      <p class="product-card__listPrice">$${product.ListPrice}</p>
       <p class="product-card__price">$${product.FinalPrice}</p></a>
   </li>`;
 }
@@ -27,13 +28,12 @@ export default async function productList(selector, category) {
     // get the list of products ... use await to make JavaScript
     // wait until the promise returns its result
     const products = await getData(category);
-    console.log(products);
 
     // only show 4 products
-    const fourProducts = products.slice(0, 4);
+    //const fourProducts = products.slice(0, 4);
   
     // render out the product list to the element
-    renderListWithTemplate(productCardTemplate, element, fourProducts);
+    renderListWithTemplate(productCardTemplate, element, products);
 
     // add
     document.querySelector(".title").innerHTML = category;
