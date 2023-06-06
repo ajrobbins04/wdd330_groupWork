@@ -15,7 +15,7 @@ function productCardTemplate(product) {
       />
       <h3 class="card__brand">${product.Brand.Name}</h3>
       <h2 class="card__name">${product.NameWithoutBrand}</h2>
-      <p class="product-card__listPrice">List Price: $${product.ListPrice}</p>
+      <p class="product-card__retailPrice">Retail Price: $${product.SuggestedRetailPrice}</p>
       <p class="product-card__price">Final Price: $${product.FinalPrice}</p></a>
   </li>`;
 }
