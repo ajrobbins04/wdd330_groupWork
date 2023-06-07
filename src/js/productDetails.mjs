@@ -21,8 +21,9 @@ export default async function productDetails(productId) {
     // add to cart button event handler
     async function addToCart() {
         setLocalStorage("so-cart", product);
+ 
+          }
     }
-}
     async function renderProductDetails() { 
 
         // add basic product info

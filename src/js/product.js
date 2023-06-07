@@ -1,4 +1,4 @@
-import { getParam, loadHeaderFooter, setLocalStorage } from "./utils.mjs";
+import { getParam, loadHeaderFooter } from "./utils.mjs";
 import productDetails from "./productDetails.mjs";
 
 

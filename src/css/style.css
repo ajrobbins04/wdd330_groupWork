@@ -110,6 +110,13 @@ button {
   fill: gray;
 }
 
+/*.cart {
+  transition-property: color;
+  transition-delay: 1s;
+  transition-duration: 3s;
+}*/
+
+
 /* End cart icon styles */
 
 .mission {
