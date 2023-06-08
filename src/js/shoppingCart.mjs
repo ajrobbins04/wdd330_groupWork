@@ -2,18 +2,18 @@ import { getLocalStorage, renderListWithTemplate } from "./utils.mjs";
 
 export default function shoppingCart() {
 
-    // retrieves cart items values from local storage
-    // using the key "so-cart"
-    const cartItems = getLocalStorage("so-cart");
+    // retrieves the values belonging to cart items from local
+    // storage using the "so-cart" key 
+    const cartContents = getLocalStorage("so-cart");
 
     // where the cart items will be displayed on cart/index.html
     const outputElement = document.querySelector(".product-list");
-
+    
     // will insert the html that displays cart items in outputElement.
-    renderListWithTemplate(cartItemTemplate, outputElement, cartItems);
+    renderListWithTemplate(cartItemTemplate, outputElement, cartContents);
     
     // must also compute and display total cost of cart items.
-    const totalPrice = calculateListTotal(cartItems);
+    const totalPrice = calculateListTotal(cartContents);
     displayCartTotal(total);
 }
  
@@ -29,7 +29,7 @@ function cartItemTemplate(item) {
     // non-clearance items only display final price
     // (which is equivalent to the list price)
     if (item.IsClearance === false) {
-      const newItem = `<li class="cart-card divider">
+      return`<li class="cart-card divider">
       <a href="#" class="cart-card__image">
         <img
           src="${item.Images.PrimaryMedium}"
@@ -45,7 +45,7 @@ function cartItemTemplate(item) {
     </li>`;
     } else {
       // items on clearance display the list price and final price.
-      const newItem = `<li class="cart-card divider">
+      return `<li class="cart-card divider">
       <a href="#" class="cart-card__image">
         <img
           src="${item.Images.PrimaryMedium}"
@@ -61,8 +61,6 @@ function cartItemTemplate(item) {
       <p class="cart-card__finalPrice">Final Price: $${item.FinalPrice}</p>
     </li>`;
     }
-
-    return newItem;
 }
 
 
