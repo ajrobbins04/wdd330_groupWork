@@ -7,12 +7,17 @@ export function qs(selector, parent = document) {
 
 // retrieve data from localstorage
 export function getLocalStorage(key) {
+  
+  // JSON.parse parses a JSON string to create
+  // an object
   return JSON.parse(localStorage.getItem(key));
 }
+
 // save data to local storage
 export function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
+
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
   qs(selector).addEventListener("touchend", (event) => {
@@ -21,18 +26,6 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
-
-
-// Commented off our code to match up with the instructor's 
-// sample code. Will delete later after we discuss the difference
-// --Marielle
-
-// export function getParam(param) {
-//   const queryString = window.location.search;
-//   const urlParams = new URLSearchParams(queryString);
-//   const product = urlParams.get(param);
-//   return product;
-// }
 
 export function getParam(param) {
   const queryString = window.location.search;
@@ -78,8 +71,6 @@ export async function renderWithTemplate(
 
 
 function loadTemplate(path) {
-  
-  // 
   return async function() {
     const response = await fetch(path);
     if (response.ok) {
