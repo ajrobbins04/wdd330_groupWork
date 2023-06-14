@@ -14,7 +14,7 @@ export default function shoppingCart() {
     
     // must also compute and display total cost of cart items.
     const totalPrice = calculateListTotal(cartContents);
-    displayCartTotal(total);
+    displayCartTotal(totalPrice);
 }
  
 // does not currently include taxes in total cost calculation.
@@ -68,7 +68,7 @@ function displayCartTotal(total) {
     if (total > 0) {
         // shows the checkout button and total if there are items in the cart
         document.querySelector(".list-footer").classList.remove("hide");
-        document.querySelector(".list-total").innerText += ` $${total}`;
+        document.querySelector(".list-total").textContent = `Total: $${total}`;
     } else {
         // don't display checkoutBtn or total if cart is empty
         document.querySelector(".list-footer").classList.add("hide");
