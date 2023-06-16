@@ -91,6 +91,7 @@ button {
   font-size: var(--large-font);
   cursor: pointer;
 }
+
 .divider {
   border-bottom: 2px solid var(--primary-color);
 }
@@ -106,8 +107,18 @@ button {
 .cart svg {
   width: 25px;
 }
+
 .cart:hover svg {
-  fill: gray;
+  fill: var(--tertiary-color);
+}
+
+/* Cart button styles */
+#addToCart:hover {
+  background-color: var(--tertiary-color);
+}
+
+.added {
+  background-color: var(--tertiary-color);
 }
 
 /*.cart {
