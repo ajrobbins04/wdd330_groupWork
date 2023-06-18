@@ -15,6 +15,40 @@ export default function shoppingCart() {
     // must also compute and display total cost of cart items.
     const totalPrice = calculateListTotal(cartContents);
     displayCartTotal(totalPrice);
+
+     // add listener to "X" icons
+     const removeBtns = document.querySelectorAll("[data-id]");
+     removeBtns.forEach((btn) => {
+       btn.addEventListener("click", removeFromCart);
+     })
+}
+
+function removeFromCart() {
+
+  // find the value of btn data-id attribute
+  const id = this.getAttribute("data-id");
+ console.log(id);
+
+  // get products in cart
+  const cartContents = getLocalStorage("so-cart");
+  
+  // convert cartContents nodeList to array
+  const cartContentsArray = Array.from(cartContents);
+
+  // remove product with the id that matches the X icon's data-id
+  let contentsUpdated = cartContentsArray.filter(product => product.Id !== id);
+
+  // remove all products from local storage, then save the
+  // updated array to local storage
+  localStorage.clear();
+  localStorage.setItem("so-cart", JSON.stringify(contentsUpdated));
+
+  // render new cart contents
+      // where the cart items will be displayed on cart/index.html
+      const outputElement = document.querySelector(".product-list");
+    
+      // will insert the html that displays cart items in outputElement.
+      renderListWithTemplate(cartItemTemplate, outputElement, contentsUpdated);
 }
  
 // does not currently include taxes in total cost calculation.
@@ -39,6 +73,7 @@ function cartItemTemplate(item) {
       <a href="#">
         <h2 class="card__name">${item.Name}</h2>
       </a>
+      <span data-id="${item.Id}" class="cart-card__remove">X</span>
       <p class="cart-card__color">${item.Colors[0].ColorName}</p>
       <p class="cart-card__quantity">qty: 1</p>
       <p class="cart-card__finalPrice">Price: $${item.FinalPrice}</p>
@@ -55,9 +90,10 @@ function cartItemTemplate(item) {
       <a href="#">
         <h2 class="card__name">${item.Name}</h2>
       </a>
+      <span data-id="${item.Id}" class="cart-card__remove">X</span>
       <p class="cart-card__color">${item.Colors[0].ColorName}</p>
       <p class="cart-card__quantity">qty: 1</p>
-      <p class="cart-card__finalPrice">List Price: $${item.ListPrice}</p>
+      <p class="cart-card__listPrice">List Price: $${item.ListPrice}</p>
       <p class="cart-card__finalPrice">Final Price: $${item.FinalPrice}</p>
     </li>`;
     }
