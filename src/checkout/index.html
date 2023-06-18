@@ -17,9 +17,42 @@
     </header>
 
     <main class="divider">
-      <section class="products">
         <h2>Review & Place your Order</h2>
-      </section>
+      <section class="checkout-form">
+        <form name="checkout" action="">
+          <fieldset>
+            <legend>Shipping</legend>
+            <div class="shipping-name">
+              <label for="fname">First Name:</label>
+              <input type="text" name="fname"/>
+              <label for="lname">Last Name:</label>
+              <input type="text" name="lname"/>
+          </div>
+          <div class="shipping-address">
+              <label for="street">Street:</label>
+              <input type="text" name="street" required>
+              <label for="city">City:</label>
+              <input type="text" name="city" required>
+              <label for="state">State:</label>
+              <input type="text" name="state" required>
+              <label for="zip">Zip Code:</label>
+              <input type="text" name="zip" required>
+            </fieldset>
+          </div>
+          <div class="payment" >
+            <label for="card-number">Card Number:</label>
+            <input type="text" name="card-number">
+            <label for="expiration">Expiration</label>
+            <input type="text" name="expiration">
+            <label for="security-code">Security Code:</label>
+            <input type="text" name="security-code">
+          </div>
+          </fieldset>
+        
+  
+      </form>
+    </section>
+    
     </main>
 
     <footer id="template-footer"></footer>
