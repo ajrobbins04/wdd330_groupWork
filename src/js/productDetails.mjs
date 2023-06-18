@@ -50,7 +50,7 @@ function renderProductDetails() {
     document.querySelector("#productName").innerText = product.Brand.Name;
     document.querySelector("#productNameWithoutBrand").innerText 
     = product.NameWithoutBrand;
-    document.querySelector("#productImage").src = product.Image;
+    document.querySelector("#productImage").src = product.Images.PrimaryMedium;
     document.querySelector("#productImage").alt = product.Name;
 
     // check if product is on clearance to display the list price

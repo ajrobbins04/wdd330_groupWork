@@ -1,7 +1,33 @@
 import { getLocalStorage } from "./utils.mjs";
 import { checkout } from "./externalServices.mjs";
 
+// takes a form element and returns an object where 
+// the key is the "name" of the form input.
+function formDataToJSON(formElement) {
+    const formData = new FormData(formElement),
+    convertedJSON = {};
 
+    formData.forEach(function (value, key) {
+        convertedJSON[key] = value;
+    });
+
+    return convertedJSON;
+}
+
+// takes the items currently stored in the cart (localstorage) and 
+// returns them in a simplified form.
+function packageItems(items) {
+    // convert the list of products to the simpler form required for checkout process
+    const simplifiedItems = items.map((item) => {
+        return {
+            id: item.Id,
+            price: item.finalPrice,
+            name: item.Name,
+            quantity: 1
+        };
+    });
+    return simplifiedItems;
+}
 const checkoutProcess = {
     // properties
     key: "",
@@ -19,7 +45,7 @@ const checkoutProcess = {
         this.list = getLocalStorage(key);
         this.calculateItemSummary();
     }, 
-    // handles calula
+    // handles item calculations
     calculateItemSummary: function() {
 
         const summaryElement = document.querySelector(
@@ -41,6 +67,7 @@ const checkoutProcess = {
         // set total item cost
         summaryElement.innerText = "$" + this.itemTotal;
     },
+    // handles order calculations
     calculateOrdertotal: function() {
         // calculate shipping
         this.shipping = 10 + (this.list.length - 1) * 2;
@@ -66,6 +93,8 @@ const checkoutProcess = {
         orderTotal.innerText = "$" + this.orderTotal;
     },
     checkout: async function(form) {
+         // build the data object from the calculated fields, the items
+         // in the cart, and the information entered into the form
         const json = formDataToJSON(form);
         json.orderDate = new Date();
         json.orderTotal = this.getOrderTotal;
