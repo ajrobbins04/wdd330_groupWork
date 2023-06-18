@@ -9,6 +9,8 @@ let product = {};
 
 export default async function productDetails(productId) {
 
+    document.getElementById("addToCart").classList.remove("added");
+
     // get the details for the current product.
     // await included b/c findProductById will return a promise.
     product = await findProductById(productId);
@@ -24,8 +26,9 @@ export default async function productDetails(productId) {
 
 // add to cart button event handler
 function addToCart() {
+
     let cartContents = getLocalStorage("so-cart");
-    console.log(cartContents);
+   
     //check to see if there was anything there
     if (!cartContents) {
         // create an array to hold products in cart
@@ -34,8 +37,11 @@ function addToCart() {
     }
     // then add the current product to the array
     cartContents.push(product);
-    console.log(cartContents);
     setLocalStorage("so-cart", cartContents);
+
+    // change button text from "Add to Cart" to "Added!"
+    document.getElementById("addToCart").textContent = "Added!"
+    document.getElementById("addToCart").classList.add("added");
   }
 
 function renderProductDetails() { 
