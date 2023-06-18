@@ -1,7 +1,7 @@
 // productList.mjs used to generate a list of product 
 // cards in HTML from an array.
 
-import { getData } from "./productData.mjs";
+import { getProductsByCategory } from "./externalServices.mjs";
 import { renderListWithTemplate } from "./utils.mjs";
 
 
@@ -40,7 +40,7 @@ export default async function productList(selector, category) {
 
     // get the list of products ... use await to make JavaScript
     // wait until the promise returns its result
-    const products = await getData(category);
+    const products = await getProductsByCategory(category);
 
     // only show 4 products
     //const fourProducts = products.slice(0, 4);

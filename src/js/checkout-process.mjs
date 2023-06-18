@@ -1,5 +1,5 @@
 import { getLocalStorage } from "./utils.mjs";
-import { checkout } from "./externalServices.mjs"
+import { checkout } from "./externalServices.mjs";
 
 
 const checkoutProcess = {

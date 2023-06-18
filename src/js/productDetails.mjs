@@ -1,7 +1,7 @@
 // productDetails.mjs contains the code needed to 
 // dynamically produce the product detail pages.
 
-import { findProductById } from "./productData.mjs";
+import { findProductById } from "./externalServices.mjs";
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 
 // sets an empty object
