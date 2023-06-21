@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 import { checkout } from "./externalServices.mjs";
 
 // takes a form element and returns an object where 
@@ -51,11 +51,11 @@ const checkoutProcess = {
         const summaryElement = document.querySelector(
             this.outputSelector + " #cartTotal"
         );
-        console.log(summaryElement);
+   
         const itemNumElement = document.querySelector(
             this.outputSelector + " #num-items"
         );
-        console.log(itemNumElement);
+
         // set quantity value
         itemNumElement.innerText = this.list.length;
 
@@ -105,9 +105,18 @@ const checkoutProcess = {
         
         try {
             const res = await checkout(json);
+            console.log(res);
+            setLocalStorage("so-cart", []);
+            location.assign("/checkout/success.html");
         } catch (err) {
-            console.log(err);
-        }
+            //removeAllAlerts();
+            // message is a property of the err object
+            for (let message in err.message) {
+                alert(err.message[message]);
+            }
+           
+        } 
+       
     }
 };
 

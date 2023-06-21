@@ -64,6 +64,7 @@ export async function renderWithTemplate(
   const htmlString = await templateFn(data);
   parentElement.insertAdjacentHTML(position, htmlString);
 
+  // callback function isn't always included
   if (callback) {
     callback(data);
   }
@@ -73,8 +74,12 @@ export async function renderWithTemplate(
 
 function loadTemplate(path) {
   return async function() {
+
+    // make fetch request to provided filepath
     const response = await fetch(path);
     if (response.ok) {
+
+       // must process as text - not JSON
       const html = await response.text();
       return html;
     }

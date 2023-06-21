@@ -18,10 +18,21 @@ document.forms["checkout"].addEventListener("submit", (e) => {
     // e.target would contain our form in this case
     checkoutProcess.checkout(e.target);
 });
+ 
+ // listening for click on the submit button
+ document.querySelector('#checkoutSubmit')
+  .addEventListener('click', (e) => {
+    // prevents from submitting form if data invalid
+    e.preventDefault();
 
-// listening for click on the button
-// document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
-//   e.preventDefault();
+    // accesses form from the DOM
+    var myForm = document.forms[0];
 
-//   checkoutProcess.checkout(document.forms['checkout']);
-// });
+    // checkValidity is a Form method
+    var chk_status = myForm.checkValidity();
+    myForm.reportValidity();
+
+    // only checkout if chk_status returns true
+    if(chk_status) 
+      checkoutProcess.checkout();
+  });
