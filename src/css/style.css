@@ -24,7 +24,8 @@ body {
 }
 img {
   max-width: 100%;
-}
+} 
+
 header {
   display: flex;
   justify-content: space-between;
@@ -81,7 +82,8 @@ header {
   color: var(--tertiary-color);
 }
 
-button {
+button,
+.btn {
   padding: 0.5em 2em;
   background-color: var(--secondary-color);
   color: white;

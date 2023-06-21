@@ -1,7 +1,7 @@
 // productList.mjs used to generate a list of product 
 // cards in HTML from an array.
 
-import { getData } from "./productData.mjs";
+import { getProductsByCategory } from "./externalServices.mjs";
 import { renderListWithTemplate } from "./utils.mjs";
 
 
@@ -16,7 +16,8 @@ function productCardTemplate(product) {
       />
       <h3 class="card__brand">${product.Brand.Name}</h3>
       <h2 class="card__name">${product.NameWithoutBrand}</h2>
-      <p class="product-card__price">Price: $${product.FinalPrice}</p></a>
+      <p class="product-card__retailPrice">Retail Price: $${product.SuggestedRetailPrice}</p>
+      <p class="product-card__price">Our Price: $${product.FinalPrice}</p></a>
   </li>`;
   } else {
     return `<li class="product-card">
@@ -27,6 +28,7 @@ function productCardTemplate(product) {
       />
       <h3 class="card__brand">${product.Brand.Name}</h3>
       <h2 class="card__name">${product.NameWithoutBrand}</h2>
+      <p class="product-card__retailPrice">Retail Price: $${product.SuggestedRetailPrice}</p>
       <p class="product-card__clearance">List Price: $${product.ListPrice}</p>
       <p class="product-card__price">Final Price: $${product.FinalPrice}</p></a>
   </li>`;
@@ -40,7 +42,7 @@ export default async function productList(selector, category) {
 
     // get the list of products ... use await to make JavaScript
     // wait until the promise returns its result
-    const products = await getData(category);
+    const products = await getProductsByCategory(category);
 
     // only show 4 products
     //const fourProducts = products.slice(0, 4);

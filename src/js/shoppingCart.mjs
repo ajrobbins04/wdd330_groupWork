@@ -58,6 +58,10 @@ function calculateListTotal(list) {
     return total;
 }
 
+/*function calculateQuantity(list) {
+ 
+}*/
+
 function cartItemTemplate(item) {
     
     // non-clearance items only display final price
@@ -74,8 +78,8 @@ function cartItemTemplate(item) {
         <h2 class="card__name">${item.Name}</h2>
       </a>
       <span data-id="${item.Id}" class="cart-card__remove">X</span>
-      <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-      <p class="cart-card__quantity">qty: 1</p>
+      <p class="cart-card__color">Color: ${item.Colors[0].ColorName}</p>
+      <p class="cart-card__quantity">Quantity: 1</p>
       <p class="cart-card__finalPrice">Price: $${item.FinalPrice}</p>
     </li>`;
     } else {
@@ -91,8 +95,8 @@ function cartItemTemplate(item) {
         <h2 class="card__name">${item.Name}</h2>
       </a>
       <span data-id="${item.Id}" class="cart-card__remove">X</span>
-      <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-      <p class="cart-card__quantity">qty: 1</p>
+      <p class="cart-card__color">Color: ${item.Colors[0].ColorName}</p>
+      <p class="cart-card__quantity">Quantity: 1</p>
       <p class="cart-card__listPrice">List Price: $${item.ListPrice}</p>
       <p class="cart-card__finalPrice">Final Price: $${item.FinalPrice}</p>
     </li>`;
