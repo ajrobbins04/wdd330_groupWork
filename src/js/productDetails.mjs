@@ -52,7 +52,7 @@ function renderProductDetails() {
     = product.NameWithoutBrand;
     document.querySelector("#productImage").src = product.Images.PrimaryMedium;
     document.querySelector("#productImage").alt = product.Name;
-
+    document.querySelector("#productRetailPrice").innerText = `Retail Price: $${product.SuggestedRetailPrice}`;
     // check if product is on clearance to display the list price
     // compared to the final price.
     const isClearance = document.querySelector("#productClearancePrice");
@@ -62,7 +62,7 @@ function renderProductDetails() {
     }
      
     // List price === final price when product isn't on clearance
-    document.querySelector("#productFinalPrice").innerText = `Price: $${product.FinalPrice}`;
+    document.querySelector("#productFinalPrice").innerText = `Our Price: $${product.FinalPrice}`;
 
     // add color, description, and set #addToCart id equal to product id
     document.querySelector("#productColorName").innerText = `Colors: ${product.Colors[0].ColorName}`;

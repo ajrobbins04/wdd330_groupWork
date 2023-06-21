@@ -51,10 +51,11 @@ const checkoutProcess = {
         const summaryElement = document.querySelector(
             this.outputSelector + " #cartTotal"
         );
+        console.log(summaryElement);
         const itemNumElement = document.querySelector(
             this.outputSelector + " #num-items"
         );
-
+        console.log(itemNumElement);
         // set quantity value
         itemNumElement.innerText = this.list.length;
 
