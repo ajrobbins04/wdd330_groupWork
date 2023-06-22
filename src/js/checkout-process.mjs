@@ -118,7 +118,6 @@ const checkoutProcess = {
             for (let message in err.message) {
                 alertMessage(err.message[message]);
             }
-           
         } 
        
     }
