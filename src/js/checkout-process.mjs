@@ -1,4 +1,8 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { 
+    getLocalStorage, 
+    setLocalStorage,
+    alertMessage,
+    removeAllAlerts } from "./utils.mjs";
 import { checkout } from "./externalServices.mjs";
 
 // takes a form element and returns an object where 
@@ -109,10 +113,10 @@ const checkoutProcess = {
             setLocalStorage("so-cart", []);
             location.assign("/checkout/success.html");
         } catch (err) {
-            //removeAllAlerts();
+            removeAllAlerts();
             // message is a property of the err object
             for (let message in err.message) {
-                alert(err.message[message]);
+                alertMessage(err.message[message]);
             }
            
         } 

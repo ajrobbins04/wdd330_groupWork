@@ -97,3 +97,43 @@ export function loadHeaderFooter() {
   renderWithTemplate(headerTemplateFn, header);
   renderWithTemplate(footerTemplateFn, footer);
 }
+
+export function alertMessage(message, scroll = true, duration = 3000) {
+
+  // create element to hold our alert
+  const alert = document.createElement("div");
+
+  // add a class to style the alert
+  alert.classList.add("alert");
+
+  // set the contents. You should have a message and an X or something the user can click on to remove
+  alert.innerHTML = `<p>${message}</p><span>X</span>`;
+
+  // add a listener to the alert to see if they clicked on the X
+  // if they did then remove the child
+  alert.addEventListener("click", function (event) {
+    if (event.target.tagName == "SPAN") {
+      main.removeChild(this);
+    }
+  });
+
+  // add the alert to the top of main - prepend inserts before first child of parent node
+  const main = document.querySelector("main");
+  main.prepend(alert);
+
+  // make sure they see the alert by scrolling to the top of the window
+  //we may not always want to do this...so default to scroll=true, but allow it to be passed in and overridden.
+  if (scroll) {
+    window.scrollTo(0, 0);
+  }
+
+  // commenting out would make alert message disappear after given duration time
+  //setTimeout(function () {
+  //  main.removeChild(alert);
+  // }, duration);
+}
+
+export function removeAllAlerts() {
+  const alerts = document.querySelectorAll(".alert");
+  alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
+}
