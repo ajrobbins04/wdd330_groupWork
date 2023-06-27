@@ -15,6 +15,7 @@ export async function getProductsByCategory(category) {
   return data.Result;
 }
 
+
 // with async, js pauses the function execution
 // until the promise settles
 export async function findProductById(id) {
