@@ -1,4 +1,4 @@
-import { loadHeaderFooter } from "../js/utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 import checkoutProcess from "./checkout-process.mjs";
 
 loadHeaderFooter();
@@ -20,11 +20,11 @@ document.forms["checkout"].addEventListener("submit", (e) => {
 });
  
  // listening for click on the submit button
- document.querySelector('#checkoutSubmit')
+ /*document.querySelector('#checkoutSubmit')
   .addEventListener('click', (e) => {
     // prevents from submitting form if data invalid
     e.preventDefault();
-
+ 
     // accesses form from the DOM
     var myForm = document.forms[0];
 
@@ -35,4 +35,4 @@ document.forms["checkout"].addEventListener("submit", (e) => {
     // only checkout if chk_status returns true
     if(chk_status) 
       checkoutProcess.checkout();
-  });
+  });*/

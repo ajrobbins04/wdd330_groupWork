@@ -67,7 +67,7 @@ const checkoutProcess = {
         const amounts = this.list.map((item) => item.FinalPrice);
 
         // add up the final price of each item 
-        this.itemTotal = amounts.reduce((sum, item) => sum + item);
+        this.itemTotal = amounts.reduce((sum, item) => sum + item, 0);
 
         // set total item cost
         summaryElement.innerText = "$" + this.itemTotal;
@@ -102,7 +102,7 @@ const checkoutProcess = {
          // in the cart, and the information entered into the form
         const json = formDataToJSON(form);
         json.orderDate = new Date();
-        json.orderTotal = this.getOrderTotal;
+        json.orderTotal = this.orderTotal;
         json.tax = this.tax;
         json.shipping = this.shipping;
         json.items = packageItems(this.list);
