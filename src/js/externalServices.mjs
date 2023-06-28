@@ -15,6 +15,21 @@ export async function getProductsByCategory(category) {
   return data.Result;
 }
 
+export async function loginRequest(creds) {
+  const loginURL = `${baseURL}login`;
+
+  const options = {
+    method: "POST",
+    headers: {
+      // header type used when sending json-encoded data
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(creds)
+  };
+
+  const response = await fetch(loginURL, options).then(convertToJson);
+  return response.accessToken;
+}
 
 // with async, js pauses the function execution
 // until the promise settles
