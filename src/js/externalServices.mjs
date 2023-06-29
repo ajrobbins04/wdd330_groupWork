@@ -31,6 +31,18 @@ export async function loginRequest(creds) {
   return response.accessToken;
 }
 
+export async function getOrders(token) {
+  const ordersURL = `${baseURL}orders`;
+
+  const options = {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${token}`,
+    },
+  };
+  return await fetch(ordersURL, options).then(convertToJson);
+}
+
 // with async, js pauses the function execution
 // until the promise settles
 export async function findProductById(id) {
